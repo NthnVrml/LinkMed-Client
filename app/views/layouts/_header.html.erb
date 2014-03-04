@@ -2,10 +2,10 @@
     <%= image_tag("logo.png", :alt => "Accueil LinkMed", :class => "round") %>
     <nav class="round">
       <ul>
-        <li><%= link_to "Accueil", '#' %></li>
+        <li><%= link_to "Accueil", root_path %></li>
         <li><%= link_to "Offre Pro", '#' %></li>
-        <li><%= link_to "Inscription", '#' %></li>
-        <li><%=link_to "A Propos De Nous", "#"%></li>
+        <li><%= link_to "Inscription", signup_path %></li>
+        <li><%=link_to "A Propos De Nous", about_path%></li>
 	     <li><%= link_to "Connexion", '#' %></li>
       </ul>
     </nav>
