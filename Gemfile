@@ -5,7 +5,8 @@ gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-
+gem 'gravatar_image_tag'
+gem "jvectormap-rails4", "~> 1.0.1"
 group :development do
   gem 'rspec-rails'
 end

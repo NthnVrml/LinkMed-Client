@@ -7,4 +7,7 @@ def titre
       "#{base_titre} | #{@titre}"
      end
 end
+  def logo
+    image_tag("logo.png", :alt => "Application LinkMed", :class => "round")
+  end
 end

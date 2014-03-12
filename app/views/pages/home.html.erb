@@ -5,3 +5,9 @@
   </p>
 </form>
 <p>Cette page doit contenir une Barre de Recherche de Praticiens, les résultats de la recherche et une carte interactive pour localisé les recherches</p>
+<div id="map" style="width: 20%; margin-left: 25%"></div>
+		<script type="text/javascript">
+			$('#map').vectorMap({map: 'fr_merc_en', onRegionClick: function(e, region) {
+				console.log(e, region);
+			}});
+		</script>

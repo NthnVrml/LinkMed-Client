@@ -1,8 +1,12 @@
 LinkMed::Application.routes.draw do
+ 
    resources :users
-    get "users/new"
+   resources :sessions, :only => [:new, :create, :destroy]
+  
 
   match '/signup', :to => "users#new", via: :get
+  match '/signin',  :to => 'sessions#new',via: :get
+  match '/signout', :to => 'sessions#destroy',via: :get
   match '/about', :to => "pages#about", via: :get
   root "pages#home"
 
