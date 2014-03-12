@@ -1,0 +1,9 @@
+# Logfile created on 2014-03-05 20:56:36 +0100 by logger.rb/36483
+D, [2014-03-05T20:56:36.972918 #7029] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+D, [2014-03-05T20:56:37.060383 #7029] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+D, [2014-03-05T20:58:25.385416 #7041] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+D, [2014-03-05T20:58:25.471011 #7041] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+D, [2014-03-05T21:04:27.393113 #7055] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+D, [2014-03-05T21:04:27.481494 #7055] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+D, [2014-03-05T21:05:02.116143 #7061] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+D, [2014-03-05T21:05:02.202328 #7061] DEBUG -- : REQUESTING PAGE: GET /signup with {} and HTTP headers {}
