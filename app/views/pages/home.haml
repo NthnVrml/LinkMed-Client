@@ -1,0 +1,64 @@
+- content_for :head do
+	= stylesheet_link_tag 'jquery-jvectormap-1.2.2'
+	= stylesheet_link_tag 'pages'
+
+- content_for :javascript do
+	= javascript_include_tag 'pages'
+	= javascript_include_tag 'jquery-jvectormap-1.2.2.min'
+	= javascript_include_tag 'jquery-jvectormap-fr-merc-en'
+
+.content.container-fluid
+	.row
+		.col-md-6.left
+			#selected-region-text= params[:region] or 'Quelle région ?'
+			#map
+		.col-md-6.right
+			.row#search
+				%form{:action => "/", :method => "get"}
+					%input#selected-region-input{type: "hidden", name: 'region', value: params[:region]}
+					.input-group
+						%input.form-control{:type => "text", :name => 'speciality',:placeholder => "Quelle spécialité ?", :value => params[:speciality]}
+						%span.input-group-btn
+							%input.btn.btn-primary.fa.fa-search{:type => "submit", value: ""}
+					.fa.fa-search
+			- if params[:speciality]
+				.row#nb-results
+					%span#nb= @doctors.count
+					%span resultats
+					%span.fa.fa-chevron-down
+			.row#doctors.panel-group
+				- i = 0; for doctor in @doctors
+					- i += 1
+					.doctor.row-fluid.panel.panel-default
+						.panel-heading
+							.col-md-9#info
+								.row-fluid
+									.col-md-5
+										.name= doctor.name
+										.speciality.yellow
+											%icon.fa.fa-angle-left
+											%span= doctor.speciality
+											%icon.fa.fa-angle-right
+									.col-md-5
+										.address= doctor.address
+										.postal_code.yellow= doctor.postal_code
+									.col-md-2.icons
+										.fa.fa-phone
+										.fa.fa-star
+							.col-md-3#planning-toggler
+								%div{"data-parent" => "#doctors", "data-toggle" => "collapse", :href => "#doctor-#{doctor.id}"}
+									%div voir
+									%div planning
+									%icon.fa.fa-chevron-down
+						.panel-collapse.collapse{id: "doctor-#{doctor.id}", class: i == 1 ? "in" : ""}
+							.panel-body
+								#rendez-vous
+									- if !doctor.time_slots.count.zero?
+										%div.text
+											rendez vous disponibles:
+										- for time_slot in doctor.time_slots
+											.rendez-vous
+												%span.start= Time.at(time_slot.start).strftime "%a %d %b %Y, %H:%M"
+									- else
+										%div.text
+											pas de vous disponible										

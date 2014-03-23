@@ -9,6 +9,7 @@ gem 'gravatar_image_tag'
 gem "jvectormap-rails4", "~> 1.0.1"
 group :development do
   gem 'rspec-rails'
+  # gem 'guard-livereload'
 end
 
 group :test do
@@ -18,6 +19,7 @@ group :test do
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+gem 'haml-rails', '0.4'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

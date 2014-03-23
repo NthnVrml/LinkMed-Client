@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title= titre
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'font-awesome.min'
+    = stylesheet_link_tag 'jquery-jvectormap-1.2.2'
+    = stylesheet_link_tag 'bootstrap'
+    = stylesheet_link_tag 'pages'
+    = yield :head
+  %body
+    %header
+      %a#logo{href: ''}
+        = image_tag "/assets/logo.png", :alt => "Accueil LinkMed"
+      #connexion.btn.btn-primary
+        %a{href: signin_path}
+          Connexion
+          %i.fa.fa-chevron-down
+    %section.round
+      - flash.each do |key, value|
+        %div{:class => "flash #{key}"}= value
+    = yield
+    / # = debug(params) if Rails.env.development?
+  = javascript_include_tag 'jquery-2.1.0.min'
+  = javascript_include_tag 'bootstrap'
+  = yield :javascript

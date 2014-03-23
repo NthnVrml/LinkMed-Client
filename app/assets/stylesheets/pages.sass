@@ -1,0 +1,113 @@
+body
+	background-color: #a3bfd5
+
+.content
+	padding-top: 180px
+	> .row
+		> .left
+			> #selected-region-text
+				position: absolute
+				color: white
+				right: 90px
+				z-index: 1
+			> #map
+				height: 300px
+				.jvectormap-zoomin, .jvectormap-zoomout
+					background: #428bca
+					color: white
+					line-height: 16px
+					border: 1px solid #357ebd
+					padding: 0 5px 2px 5px
+					border-radius: 2px
+					left: 30px
+					height: auto
+					width: auto
+				.jvectormap-zoomout
+					top: 34px
+		> .right
+			padding: 0 80px 0 40px
+			#search > form
+				position: relative
+				input[type="text"]
+					background: #fbfbfb
+				input[type="submit"]
+					width: 40px
+				> .fa-search
+					pointer-events: none
+					position: absolute
+					color: white
+					right: 12px
+					z-index: 2
+					top: 10px
+			#nb-results
+				color: white
+				font-size: 12px
+				text-transform: uppercase
+				letter-spacing: 1px
+				padding: 9px 9px 4px 9px
+				border-bottom: 1px dotted whitesmoke
+				#nb
+					margin-right: 4px
+					font-size: 18px
+				.fa
+					margin-left: 4px
+					font-size: 10px
+			#doctors
+				.doctor
+					display: block
+					margin: 12px 0
+					border: none
+					border-radius: 0
+					background-color: #739dbd
+					.panel-body
+						color: white
+						border-radius: 0
+						padding-bottom: 8px
+						#rendez-vous
+							padding-top: 10px
+							> .text
+								text-transform: uppercase
+								font-size: 12px
+								padding-bottom: 3px
+								border-bottom: 1px dotted white
+								margin-bottom: 10px
+							> .rendez-vous
+								font-size: 12px
+					.panel-heading
+						padding: 0
+						border-radius: 0
+						text-align: center
+						background: none
+						border: none
+						> *
+							padding: 0
+						> #info > .row-fluid
+							> *
+								background: #79a6c4
+								padding: 0
+								height: 50px
+								padding-top: 6px
+								color: white
+								display: block
+								font-size: 12px
+							.yellow
+								color: #edc350
+							.icons
+								> *
+									margin: 4px 0
+									display: block
+						> #planning-toggler
+							cursor: pointer
+							color: white
+							position: relative
+							> div
+								text-transform: uppercase
+								padding: 5px 12px
+								background: #79a6c4
+								.fa
+									position: absolute
+									font-size: 10px
+									right: 10px
+									top: 20px
+						> #planning-toggler:hover
+							color: #ddd
