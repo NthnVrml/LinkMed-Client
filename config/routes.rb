@@ -1,9 +1,9 @@
 LinkMed::Application.routes.draw do
  
-   resources :users
-   resources :sessions, :only => [:new, :create, :destroy]
+  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
   
-
+  post 'take_rendez_vous', to: "users#take_rendez_vous"
   match '/signup', :to => "users#new", via: :get
   match '/signin',  :to => 'sessions#new',via: :get
   match '/signout', :to => 'sessions#destroy',via: :get

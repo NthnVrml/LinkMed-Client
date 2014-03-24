@@ -11,7 +11,7 @@
     = yield :head
   %body
     %header
-      %a#logo{href: ''}
+      %a#logo{href: '/'}
         = image_tag "/assets/logo.png", :alt => "Accueil LinkMed"
       - if signed_in?
         #profil.btn.btn-success
@@ -38,6 +38,7 @@
         %div{:class => "flash #{key}"}= value
     = yield
     / # = debug(params) if Rails.env.development?
+  = javascript_include_tag 'application'
   = javascript_include_tag 'jquery-2.1.0.min'
   = javascript_include_tag 'bootstrap'
   = yield :javascript

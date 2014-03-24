@@ -54,11 +54,16 @@
 							.panel-body
 								#rendez-vous
 									- if !doctor.time_slots.count.zero?
-										%div.text
+										.text
 											rendez vous disponibles:
-										- for time_slot in doctor.time_slots
+										- for time_slot in doctor.free_time_slots
 											.rendez-vous
-												%span.start= Time.at(time_slot.start).strftime "%a %d %b %Y, %H:%M"
+												%span Le
+												%span.start= Time.at(time_slot.start).strftime "%a %d %b %Y à %H:%M"
+												- if signed_in?
+													= form_tag "/take_rendez_vous" do
+														%input#selected-region-input{type: "hidden", name: 'time_slot_id', value: time_slot.id}
+														= submit_tag "", data: {confirm: "Are you sure?"}, class: 'btn btn-success'
 									- else
 										%div.text
 											pas de vous disponible										

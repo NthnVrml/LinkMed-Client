@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
- before_filter :authenticate, :only => [:edit, :update]
+ before_filter :authenticate, :only => [:edit, :update, :take_rendez_vous]
 
   def user_params
     params.require(:user).permit(:nom, :prenom, :email, :password, :salt, :encrypted_password)
@@ -45,9 +45,18 @@ class UsersController < ApplicationController
     end
   end
 
-   private
+  def take_rendez_vous
+    @user = current_user
+    @time_slot = TimeSlot.find(params[:time_slot_id])
+    @user.rdvs.create time_slot: @time_slot
+    @doctor = @time_slot.doctor
+    flash['notice'] = "Vous avez bien pris le rendez vous avec le doctor #{@doctor.name} #{Time.at(@time_slot.start).strftime "le %a %d %b %Y à %H:%M"}"
+    redirect_to user_path(@user)
+  end
 
-    def authenticate
-      deny_access unless signed_in?
-    end
+ private
+
+  def authenticate
+    deny_access unless signed_in?
+  end
 end
