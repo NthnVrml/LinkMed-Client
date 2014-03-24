@@ -11,7 +11,7 @@
     = yield :head
   %body
     %header
-      %a#logo{href: ''}
+      %a#logo{href: root_path}
         = image_tag "/assets/logo.png", :alt => "Accueil LinkMed"
       - if signed_in?
         #profil.btn.btn-success
