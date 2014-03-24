@@ -13,10 +13,26 @@
     %header
       %a#logo{href: ''}
         = image_tag "/assets/logo.png", :alt => "Accueil LinkMed"
-      #connexion.btn.btn-primary
-        %a{href: signin_path}
-          Connexion
-          %i.fa.fa-chevron-down
+      - if signed_in?
+        #profil.btn.btn-success
+          %a{href: edit_user_path(current_user)}
+            Profil
+            %i.fa.fa-edit
+      - else
+        #inscription.btn.btn-success
+          %a{href: signup_path}
+            S'inscrire
+            %i.fa.fa-pencil
+      - if signed_in?
+        #deconnexion.btn.btn-primary
+          %a{href: signout_path, :method => :delete}
+            Déconnexion
+            %i.fa.fa-sign-out
+      - else
+        #connexion.btn.btn-primary
+          %a{href: signin_path}
+            Connexion
+            %i.fa.fa-sign-in
     %section.round
       - flash.each do |key, value|
         %div{:class => "flash #{key}"}= value

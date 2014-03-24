@@ -1,0 +1,18 @@
+
+.content.container-fluid
+  .row
+    .col-md-6.left
+      %h1 Identification
+      = form_for(:session, :url => sessions_path) do |f|
+        .field
+          = f.label :email, "eMail"
+          %br/
+          = f.text_field :email
+        .field
+          = f.label :password, "Mot de passe"
+          %br/
+          = f.password_field :password
+        .actions
+          = f.submit "S'identifier"
+        %p
+          Pas encore inscrit ? #{link_to "S'inscrire !", signup_path}
