@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     @time_slot = TimeSlot.find(params[:time_slot_id])
     @user.rdvs.create time_slot: @time_slot
     @doctor = @time_slot.doctor
+    @time_slot.update_attributes taken: 1
     flash['notice'] = "Vous avez bien pris le rendez vous avec le doctor #{@doctor.name} #{Time.at(@time_slot.start).strftime "le %a %d %b %Y à %H:%M"}"
     redirect_to user_path(@user)
   end
