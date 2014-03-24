@@ -1,18 +1,19 @@
+- content_for :head do
+  = stylesheet_link_tag 'sessions'
+
 
 .content.container-fluid
   .row
     .col-md-6.left
-      %h1 Identification
+      %h1 Connexion
       = form_for(:session, :url => sessions_path) do |f|
         .field
-          = f.label :email, "eMail"
-          %br/
+          = f.label :email, "Mail"
           = f.text_field :email
         .field
-          = f.label :password, "Mot de passe"
-          %br/
+          = f.label :password, "MDP"
           = f.password_field :password
         .actions
           = f.submit "S'identifier"
-        %p
+        %p  
           Pas encore inscrit ? #{link_to "S'inscrire !", signup_path}

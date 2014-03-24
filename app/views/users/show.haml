@@ -1,0 +1,14 @@
+- content_for :head do
+  = stylesheet_link_tag 'show_users'
+
+.content.container-fluid
+  .row
+    .col-md-8.left
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title 
+            =gravatar_for @user
+            =@user.prenom
+            =@user.nom
+        .panel-body
+          =@user.email
