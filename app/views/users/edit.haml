@@ -1,34 +1,39 @@
 - content_for :head do
   = stylesheet_link_tag 'edit_users'
 
+- content_for :javascript do
+  = javascript_include_tag 'users'
+
 .content.container-fluid
   .row
     .col-md-8.left
+      %div
+        = gravatar_for @user
+        %a{:href => "http://gravatar.com/emails"} changer
       %h1 Edition du profil
       = form_for(@user) do |f|
         = render 'shared/error_messages', :object => f.object
         .field
           = f.label :nom, "Nom"
-          %br/
           = f.text_field :nom
         .field
           = f.label :prenom, "Nom"
-          %br/
           = f.text_field :prenom
         .field
           = f.label :email, "eMail"
-          %br/
           = f.text_field :email
         .field
           = f.label :password, "Mot de passe"
-          %br/
           = f.password_field :password
         .field
           = f.label :password_confirmation, "Confirmation"
-          %br/
           = f.password_field :password_confirmation
+        .user_fields
+          - for name, text in @fields
+            .user_field
+              %input{type: 'text', name: 'fields[name][]', value: name}
+              %input{type: 'text', name: 'fields[text][]', value: text}
         .actions
           = f.submit "Update"
-      %div
-        = gravatar_for @user
-        %a{:href => "http://gravatar.com/emails"} changer
+          #add-field
+            .btn.btn-info Ajouter un champ

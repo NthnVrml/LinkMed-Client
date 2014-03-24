@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
 
+  def parsed_fields
+    self.fields.nil? ? [] : JSON.parse(self.fields)
+  end
+
 private
 
   def encrypt_password

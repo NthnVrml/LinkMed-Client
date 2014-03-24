@@ -17,3 +17,6 @@
             %span.start= Time.at(rdv.time_slot.start).strftime "Le %a %d %b %Y à %H:%M"
             %span avec le docteur
             %span= "#{rdv.doctor.name}."
+        - for name, text in @fields
+          %span= name
+          %span= text

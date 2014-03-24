@@ -15,9 +15,14 @@
         = image_tag "/assets/logo.png", :alt => "Accueil LinkMed"
       - if signed_in?
         #profil.btn.btn-success
-          %a{href: edit_user_path(current_user)}
-            Profil
-            %i.fa.fa-edit
+          - if request.path == user_path(current_user)
+            %a{href: edit_user_path(current_user)}
+              Edit
+              %i.fa.fa-edit
+          - else
+            %a{href: user_path(current_user)}
+              Profil
+              %i.fa.fa-edit
       - else
         #inscription.btn.btn-success
           %a{href: signup_path}
