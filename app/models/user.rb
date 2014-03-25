@@ -2,11 +2,11 @@ class User < ActiveRecord::Base
   attr_accessor :password
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :nom,  :presence => true, :length   => { :maximum => 30 }
-  validates :nom,  :presence => true, :length   => { :maximum => 30 }
-  validates :email, :presence => true, :format   => { :with => email_regex }, :uniqueness => { :case_sensitive => false }
+  validates :nom, :presence => true, :length => { :maximum => 30 }
+  validates :nom, :presence => true, :length => { :maximum => 30 }
+  validates :email, :presence => true, :format => { :with => email_regex }, :uniqueness => { :case_sensitive => false }
   # Crée automatique l'attribut virtuel 'password_confirmation'.
-  validates :password, :presence => true, :confirmation => true, :length => { :within => 6..40 }
+  validates :password, :presence => true, :confirmation => true, :length => { :within => 6..40 }, on: :create
   has_many :rdvs, inverse_of: :user
 
   before_save :encrypt_password

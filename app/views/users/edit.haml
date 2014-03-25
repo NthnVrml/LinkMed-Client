@@ -1,39 +1,37 @@
 - content_for :head do
-  = stylesheet_link_tag 'edit_users'
+  = stylesheet_link_tag 'users'
 
 - content_for :javascript do
   = javascript_include_tag 'users'
 
-.content.container-fluid
+#edit.content.container-fluid
   .row
-    .col-md-8.left
-      %div
-        = gravatar_for @user
-        %a{:href => "http://gravatar.com/emails"} changer
-      %h1 Edition du profil
-      = form_for(@user) do |f|
-        = render 'shared/error_messages', :object => f.object
-        .field
-          = f.label :nom, "Nom"
-          = f.text_field :nom
-        .field
-          = f.label :prenom, "Nom"
-          = f.text_field :prenom
-        .field
-          = f.label :email, "eMail"
-          = f.text_field :email
-        .field
-          = f.label :password, "Mot de passe"
-          = f.password_field :password
-        .field
-          = f.label :password_confirmation, "Confirmation"
-          = f.password_field :password_confirmation
-        .user_fields
+    = form_for(@user) do |f|
+      = render 'shared/error_messages', :object => f.object
+      .col-md-4.left
+        .title.lead
+          .gravatar= gravatar_for @user, size: '80x80'
+          .info
+            .name
+              = f.label :nom, "Prenom"
+              = f.text_field :prenom
+            .field
+              = f.label :nom, "Nom"
+              = f.text_field :nom
+            .email
+              = f.label :nom, "Email"
+              = f.text_field :email
+        .actions.pull-right
+          = f.submit "Update", class: 'btn btn-success'
+          %span#add-field
+            .btn.btn-primary Ajouter un champ
+      .col-md-8.right
+        #fields.container-fluid
+          .lead Mes infos
+        #user_fields
           - for name, text in @fields
-            .user_field
-              %input{type: 'text', name: 'fields[name][]', value: name}
-              %input{type: 'text', name: 'fields[text][]', value: text}
-        .actions
-          = f.submit "Update"
-          #add-field
-            .btn.btn-info Ajouter un champ
+            .row.field.user_field
+              .col-md-4
+                %input{type: 'text', name: 'fields[name][]', value: name, placeholder: 'Nom du champ'}
+              .col-md-8
+                %textarea{name: 'fields[text][]', placeholder: 'Détails', cols: '20'}= text

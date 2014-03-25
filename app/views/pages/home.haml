@@ -2,6 +2,9 @@
 	= stylesheet_link_tag 'jquery-jvectormap-1.2.2'
 	= stylesheet_link_tag 'pages'
 
+- content_for :head do
+	= stylesheet_link_tag 'pages'
+
 - content_for :javascript do
 	= javascript_include_tag 'jquery-jvectormap-1.2.2.min'
 	= javascript_include_tag 'jquery-jvectormap-fr-merc-en'

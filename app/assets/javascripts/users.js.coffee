@@ -4,7 +4,11 @@
 
 $ ->
 	$('#add-field').click ->
-		$('.user_fields').append "<div class='user_field'>
-			<input class='field-name' type='text' name='fields[name][]' placeholder='Nom du champ'/>
-			<input class='field-text' type='text' name='fields[text][]' placeholder='Détails'/>
+		$('#user_fields').append "<div class='row user_field'>
+			<div class='col-md-4'>
+				<input class='field-name' type='text' name='fields[name][]' placeholder='Nom du champ'/>
+			</div>
+			<div class='col-md-8'>
+				<textarea placeholder='Détails' class='field-text' type='text' name='fields[text][]'></textarea>
+			</div>
 		</div>"

@@ -1,19 +1,64 @@
-.content
-	padding-top: 260px
-	>.row
-		>.left
-			> h1
-				position: absolute
-				left: 500px
-				top: 0px			
-			> form
-				position: absolute
-				left: 500px
-				top: 70px
-				>.formulaire
-					>.field
-						margin-bottom: 10px
-				>div
-					position: absolute
-					left: 500px
-					top: 70px
+#edit.content
+	padding: 150px 30px 0 30px
+	> .row
+		> *
+			padding: 0 50px
+		> form
+			> .left
+				> .actions
+					margin-top: 20px
+					> input
+						margin-right: 10px
+				> .title > .info
+					margin-top: 30px
+					> div
+						margin-top: 10px
+						font-size: 14px
+						> input
+							float: right
+			> .right
+				padding-left: 30px
+				> #user_fields
+					padding-left: 12px
+					> .user_field
+						font-size: 16px
+						> * > *
+							margin-top: 10px
+							width: 100%
+
+#show.content
+	padding: 150px 30px 0 30px
+	> .row
+		> *
+			padding: 0 50px
+		> .left
+			text-align: left
+			> .title
+				> *
+					display: inline-block
+				> .info
+					margin-left: 30px
+					margin-top: 10px
+			> #fields
+				margin-top: 50px
+				> .field
+					font-size: 16px
+					> *
+						border-top: 1px solid white
+						padding: 8px 5px
+						> .name
+							border-right: 1px solid white
+		> .right
+			> #rendez-vous
+				text-align: center
+				> .lead
+					margin-bottom: 40px
+				> .title
+					margin-bottom: 10px
+					// border-bottom: 1px solid white
+				> .rendez-vous
+					> div
+						border-top: 1px solid white
+						padding: 8px 5px
+
+

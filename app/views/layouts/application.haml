@@ -3,42 +3,37 @@
   %head
     %title= titre
     = csrf_meta_tags
-    = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'font-awesome.min'
     = stylesheet_link_tag 'jquery-jvectormap-1.2.2'
     = stylesheet_link_tag 'bootstrap'
-    = stylesheet_link_tag 'pages'
+    = stylesheet_link_tag 'application'
     = yield :head
   %body
     %header
       %a#logo{href: root_path}
         = image_tag "/assets/logo.png", :alt => "Accueil LinkMed"
       - if signed_in?
-        #profil.btn.btn-success
-          - if request.path == user_path(current_user)
-            %a{href: edit_user_path(current_user)}
-              Edit
-              %i.fa.fa-edit
-          - else
-            %a{href: user_path(current_user)}
-              Profil
-              %i.fa.fa-edit
+        - if request.path == user_path(current_user)
+          %a#profil.btn.btn-success{href: edit_user_path(current_user)}
+            Edit
+            %i.fa.fa-edit
+        - else
+          %a#profil.btn.btn-success{href: user_path(current_user)}
+            Profil
+            %i.fa.fa-edit
       - else
-        #inscription.btn.btn-success
-          %a{href: signup_path}
-            S'inscrire
-            %i.fa.fa-pencil
+        %a#inscription.btn.btn-success{href: signup_path}
+          S'inscrire
+          %i.fa.fa-pencil
       - if signed_in?
-        #deconnexion.btn.btn-primary
-          %a{href: signout_path, :method => :delete}
-            Déconnexion
-            %i.fa.fa-sign-out
+        %a#deconnexion.btn.btn-primary{href: signout_path, :method => :delete}
+          Déconnexion
+          %i.fa.fa-sign-out
       - else
-        #connexion.btn.btn-primary
-          %a{href: signin_path}
-            Connexion
-            %i.fa.fa-sign-in
-    %section.round
+        %a#connexion.btn.btn-primary{href: signin_path}
+          Connexion
+          %i.fa.fa-sign-in
+    %section.flash-wrapper
       - flash.each do |key, value|
         %div{:class => "flash #{key}"}= value
     = yield
